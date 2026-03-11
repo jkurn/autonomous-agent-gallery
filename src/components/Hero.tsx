@@ -15,22 +15,35 @@ const Hero = () => {
 
       <div className="container relative z-10">
         <p className="font-mono text-xs tracking-[0.3em] text-muted-foreground mb-6 uppercase">
-          Open Source AI Agent — Est. Nov 2025 — Creator hired by OpenAI
+          33 Real Use Cases — From the Community — No Marketing, Just Receipts
         </p>
 
-        <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-none mb-6 neon-glow-cyan text-primary">
-          OPENCLAW<span className="terminal-cursor">_</span>
+        <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-none mb-8 neon-glow-cyan text-primary">
+          BUILD ON CLAW<span className="terminal-cursor">_</span>
         </h1>
 
-        <p className="font-body text-base md:text-lg text-foreground max-w-3xl mb-4 leading-relaxed">
-          An open-source AI assistant that runs locally on your computer, connects to your messaging apps — WhatsApp, Telegram, iMessage, Slack, Discord — and takes autonomous actions on your behalf every 30 minutes.
-        </p>
-        <p className="font-body text-sm md:text-base text-muted-foreground max-w-3xl mb-4 leading-relaxed">
-          You text it like a friend. It has access to your files, your browser, your APIs. It remembers conversations for weeks. It doesn't wait for prompts — it runs on a <span className="text-primary font-mono text-xs">"heartbeat"</span>, proactively working while you sleep.
-        </p>
-        <p className="font-mono text-xs text-accent mb-12 neon-glow-magenta">
-          Below: 33 real use cases from the community. From grocery shopping to negotiating a $4,200 car discount to building a YouTube dashboard overnight.
-        </p>
+        <div className="max-w-3xl space-y-6 mb-12">
+          <div>
+            <h2 className="font-mono text-xs tracking-[0.2em] text-primary mb-2 uppercase">What is OpenClaw?</h2>
+            <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed">
+              An open-source AI agent that runs on your computer and connects to your messaging apps. WhatsApp, iMessage, Slack. You text it a task and it executes. No back and forth. It also runs on a timer, checking in every <span className="text-primary font-mono text-xs">30 minutes</span> to act on your behalf — whether you asked it to or not.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="font-mono text-xs tracking-[0.2em] text-primary mb-2 uppercase">What is this page?</h2>
+            <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed">
+              33 real things people have done with it. Someone negotiated a car purchase and saved <span className="text-accent font-mono text-xs neon-glow-magenta">$4,200</span>. Someone fixed a software bug from a vacation in Morocco without opening their laptop. Someone woke up to a phone call from their own AI, which had quietly acquired a Twilio number overnight and decided morning was a good time to check in.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="font-mono text-xs tracking-[0.2em] text-primary mb-2 uppercase">What you can do here</h2>
+            <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed">
+              Browse by category — work, personal, smart home, multi-agent, and the genuinely strange. Filter by complexity. See which ones carry real security risk, and which ones someone actually put a dollar figure on.
+            </p>
+          </div>
+        </div>
 
         <div className="grid grid-cols-2 md:grid-cols-5 gap-px bg-border/50">
           {stats.map((stat) => (
