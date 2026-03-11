@@ -1,13 +1,6 @@
 import { useState } from "react";
-import { useCases, type Category } from "@/data/useCases";
-
-const categoryColor: Record<Category, string> = {
-  "Everyday Life": "hsl(185, 100%, 55%)",
-  "Work": "hsl(185, 60%, 65%)",
-  "Multi-Agent": "hsl(260, 80%, 65%)",
-  "Smart Home": "hsl(50, 80%, 55%)",
-  "Unhinged": "hsl(310, 100%, 60%)",
-};
+import { useCases } from "@/data/useCases";
+import { categoryColor } from "@/data/categoryColors";
 
 const RiskRewardMatrix = () => {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
@@ -33,7 +26,6 @@ const RiskRewardMatrix = () => {
             className="w-full border border-border wet-surface"
             preserveAspectRatio="xMidYMid meet"
           >
-            {/* Grid lines */}
             {[2, 4, 6, 8].map((v) => (
               <g key={v}>
                 <line
@@ -55,7 +47,6 @@ const RiskRewardMatrix = () => {
               </g>
             ))}
 
-            {/* Axis labels */}
             <text x={CHART_W / 2} y={CHART_H - 2} textAnchor="middle" fill="hsl(200, 15%, 50%)" style={{ fontSize: 3, fontFamily: "Roboto Mono" }}>
               CAPABILITY →
             </text>
@@ -63,7 +54,6 @@ const RiskRewardMatrix = () => {
               RISK →
             </text>
 
-            {/* Data points */}
             {useCases.map((uc) => {
               const cx = PAD + ((uc.capability - 1) / 9) * (CHART_W - 2 * PAD);
               const cy = CHART_H - PAD - ((uc.risk - 1) / 9) * (CHART_H - 2 * PAD);
@@ -71,13 +61,7 @@ const RiskRewardMatrix = () => {
               return (
                 <g key={uc.id}>
                   {isHovered && (
-                    <circle
-                      cx={cx}
-                      cy={cy}
-                      r={4}
-                      fill={categoryColor[uc.category]}
-                      opacity={0.2}
-                    />
+                    <circle cx={cx} cy={cy} r={4} fill={categoryColor[uc.category]} opacity={0.2} />
                   )}
                   <circle
                     cx={cx}
@@ -94,11 +78,10 @@ const RiskRewardMatrix = () => {
             })}
           </svg>
 
-          {/* Tooltip */}
           {hoveredUseCase && (
             <div className="absolute top-4 right-4 wet-surface border border-primary/30 neon-border-cyan p-3 max-w-xs pointer-events-none">
               <div className="font-mono text-xs text-primary mb-1">
-                {String(hoveredUseCase.id).padStart(2, "0")} — {hoveredUseCase.category.toUpperCase()}
+                {String(hoveredUseCase.id).padStart(2, "0")} - {hoveredUseCase.category.toUpperCase()}
               </div>
               <div className="font-mono text-sm font-semibold text-foreground mb-1">
                 {hoveredUseCase.title}
@@ -110,7 +93,6 @@ const RiskRewardMatrix = () => {
           )}
         </div>
 
-        {/* Legend */}
         <div className="flex flex-wrap gap-4 mt-4">
           {Object.entries(categoryColor).map(([cat, color]) => (
             <div key={cat} className="flex items-center gap-2">

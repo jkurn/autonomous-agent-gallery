@@ -38,8 +38,10 @@
 
     --neon-cyan: 185 100% 55%;
     --neon-magenta: 310 100% 60%;
+    --neon-green: 145 80% 55%;
     --neon-cyan-glow: 185 100% 70%;
     --neon-magenta-glow: 310 100% 75%;
+    --neon-green-glow: 145 80% 70%;
 
     --sidebar-background: 220 25% 5%;
     --sidebar-foreground: 200 20% 90%;
