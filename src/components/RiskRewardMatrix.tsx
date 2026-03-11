@@ -2,11 +2,11 @@ import { useState } from "react";
 import { useCases, type Category } from "@/data/useCases";
 
 const categoryColor: Record<Category, string> = {
-  "Everyday Life": "hsl(130, 100%, 50%)",
-  "Work": "hsl(130, 60%, 60%)",
-  "Multi-Agent": "hsl(190, 80%, 55%)",
+  "Everyday Life": "hsl(185, 100%, 55%)",
+  "Work": "hsl(185, 60%, 65%)",
+  "Multi-Agent": "hsl(260, 80%, 65%)",
   "Smart Home": "hsl(50, 80%, 55%)",
-  "Unhinged": "hsl(1, 100%, 61%)",
+  "Unhinged": "hsl(310, 100%, 60%)",
 };
 
 const RiskRewardMatrix = () => {
@@ -20,7 +20,7 @@ const RiskRewardMatrix = () => {
   return (
     <section className="border-b border-border py-12 md:py-16">
       <div className="container">
-        <h2 className="font-mono text-lg md:text-xl font-bold mb-2 tracking-tight">
+        <h2 className="font-display text-lg md:text-xl font-bold mb-2 tracking-tight">
           RISK / REWARD MATRIX<span className="terminal-cursor text-primary">_</span>
         </h2>
         <p className="font-body text-xs text-muted-foreground mb-8">
@@ -30,7 +30,7 @@ const RiskRewardMatrix = () => {
         <div className="relative w-full" style={{ maxWidth: 800 }}>
           <svg
             viewBox={`0 0 ${CHART_W} ${CHART_H}`}
-            className="w-full border border-border bg-background"
+            className="w-full border border-border wet-surface"
             preserveAspectRatio="xMidYMid meet"
           >
             {/* Grid lines */}
@@ -41,7 +41,7 @@ const RiskRewardMatrix = () => {
                   y1={PAD}
                   x2={PAD + ((v - 1) / 9) * (CHART_W - 2 * PAD)}
                   y2={CHART_H - PAD}
-                  stroke="hsl(0,0%,20%)"
+                  stroke="hsl(185, 100%, 55%, 0.08)"
                   strokeWidth="0.2"
                 />
                 <line
@@ -49,17 +49,17 @@ const RiskRewardMatrix = () => {
                   y1={PAD + ((v - 1) / 9) * (CHART_H - 2 * PAD)}
                   x2={CHART_W - PAD}
                   y2={PAD + ((v - 1) / 9) * (CHART_H - 2 * PAD)}
-                  stroke="hsl(0,0%,20%)"
+                  stroke="hsl(185, 100%, 55%, 0.08)"
                   strokeWidth="0.2"
                 />
               </g>
             ))}
 
             {/* Axis labels */}
-            <text x={CHART_W / 2} y={CHART_H - 2} textAnchor="middle" className="fill-muted-foreground" style={{ fontSize: 3, fontFamily: "Roboto Mono" }}>
+            <text x={CHART_W / 2} y={CHART_H - 2} textAnchor="middle" fill="hsl(200, 15%, 50%)" style={{ fontSize: 3, fontFamily: "Roboto Mono" }}>
               CAPABILITY →
             </text>
-            <text x={3} y={CHART_H / 2} textAnchor="middle" className="fill-destructive" style={{ fontSize: 3, fontFamily: "Roboto Mono" }} transform={`rotate(-90, 3, ${CHART_H / 2})`}>
+            <text x={3} y={CHART_H / 2} textAnchor="middle" fill="hsl(310, 100%, 60%)" style={{ fontSize: 3, fontFamily: "Roboto Mono" }} transform={`rotate(-90, 3, ${CHART_H / 2})`}>
               RISK →
             </text>
 
@@ -69,24 +69,34 @@ const RiskRewardMatrix = () => {
               const cy = CHART_H - PAD - ((uc.risk - 1) / 9) * (CHART_H - 2 * PAD);
               const isHovered = hoveredId === uc.id;
               return (
-                <circle
-                  key={uc.id}
-                  cx={cx}
-                  cy={cy}
-                  r={isHovered ? 2.5 : 1.8}
-                  fill={categoryColor[uc.category]}
-                  opacity={isHovered ? 1 : 0.75}
-                  className="cursor-pointer transition-all"
-                  onMouseEnter={() => setHoveredId(uc.id)}
-                  onMouseLeave={() => setHoveredId(null)}
-                />
+                <g key={uc.id}>
+                  {isHovered && (
+                    <circle
+                      cx={cx}
+                      cy={cy}
+                      r={4}
+                      fill={categoryColor[uc.category]}
+                      opacity={0.2}
+                    />
+                  )}
+                  <circle
+                    cx={cx}
+                    cy={cy}
+                    r={isHovered ? 2.5 : 1.8}
+                    fill={categoryColor[uc.category]}
+                    opacity={isHovered ? 1 : 0.75}
+                    className="cursor-pointer transition-all"
+                    onMouseEnter={() => setHoveredId(uc.id)}
+                    onMouseLeave={() => setHoveredId(null)}
+                  />
+                </g>
               );
             })}
           </svg>
 
           {/* Tooltip */}
           {hoveredUseCase && (
-            <div className="absolute top-4 right-4 bg-card border border-border p-3 max-w-xs pointer-events-none">
+            <div className="absolute top-4 right-4 wet-surface border border-primary/30 neon-border-cyan p-3 max-w-xs pointer-events-none">
               <div className="font-mono text-xs text-primary mb-1">
                 {String(hoveredUseCase.id).padStart(2, "0")} — {hoveredUseCase.category.toUpperCase()}
               </div>

@@ -2,19 +2,19 @@ const SecurityCallout = () => {
   return (
     <section className="py-12 md:py-16">
       <div className="container">
-        <div className="border-2 border-destructive p-6 md:p-8">
-          <h2 className="font-mono text-lg md:text-xl font-bold mb-6 tracking-tight text-destructive">
+        <div className="border-2 neon-border-magenta p-6 md:p-8 wet-surface">
+          <h2 className="font-display text-lg md:text-xl font-bold mb-6 tracking-tight text-accent neon-glow-magenta">
             SECURITY CONCERNS_
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-destructive/20 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-accent/20 mb-6">
             {[
               { value: "40,000+", label: "UNPROTECTED INSTANCES LEAKING API KEYS" },
               { value: "341", label: "MALICIOUS SKILLS ON CLAWHUB" },
               { value: "27,000", label: "FAMILY PHOTOS NEARLY DELETED BY AGENT" },
             ].map((stat) => (
               <div key={stat.label} className="bg-background p-4">
-                <div className="font-mono text-2xl font-bold text-destructive">
+                <div className="font-display text-2xl font-bold text-accent neon-glow-magenta">
                   {stat.value}
                 </div>
                 <div className="font-mono text-[10px] tracking-wider text-muted-foreground mt-1">
@@ -28,8 +28,8 @@ const SecurityCallout = () => {
             Peter himself says this technology "should only be run by people who understand computer security." Researchers found malicious skills disguised as crypto wallets and trading bots designed to steal credentials. One user's agent bombarded 500+ messages to random contacts. Another had his email compromised by a single prompt injection.
           </p>
 
-          <div className="border-t border-destructive/30 pt-6">
-            <h3 className="font-mono text-xs tracking-wider text-destructive mb-4">
+          <div className="border-t border-accent/30 pt-6">
+            <h3 className="font-mono text-xs tracking-wider text-accent mb-4">
               SAFETY CHECKLIST
             </h3>
             <ul className="space-y-2">

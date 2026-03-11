@@ -17,8 +17,8 @@ const UseCaseCard = ({ useCase, filtered }: UseCaseCardProps) => {
 
   return (
     <div
-      className={`border border-border transition-opacity duration-300 ${filtered ? "card-filtered" : "card-active cursor-pointer"}`}
-      onClick={() => !filtered && setExpanded(!expanded)}
+      className={`border border-border wet-surface transition-all duration-300 cursor-pointer hover:border-primary/30 ${filtered ? "hidden" : ""}`}
+      onClick={() => setExpanded(!expanded)}
     >
       <div className="p-4 md:p-5">
         <div className="flex items-start justify-between gap-3 mb-2">
@@ -27,7 +27,7 @@ const UseCaseCard = ({ useCase, filtered }: UseCaseCardProps) => {
           </span>
           <div className="flex items-center gap-2">
             {useCase.category === "Unhinged" ? (
-              <span className="font-mono text-[10px] tracking-wider text-destructive">
+              <span className="font-mono text-[10px] tracking-wider text-accent neon-glow-magenta">
                 {useCase.category.toUpperCase()}
               </span>
             ) : (
@@ -52,7 +52,7 @@ const UseCaseCard = ({ useCase, filtered }: UseCaseCardProps) => {
               {useCase.detail}
             </p>
             {useCase.money && (
-              <div className="mt-3 font-mono text-xs text-primary">
+              <div className="mt-3 font-mono text-xs text-primary neon-glow-cyan">
                 → {useCase.money}
               </div>
             )}

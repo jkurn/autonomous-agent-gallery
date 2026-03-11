@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,44 +6,49 @@
 
 @layer base {
   :root {
-    --background: 0 0% 6.7%;
-    --foreground: 0 0% 91.8%;
+    --background: 220 25% 5%;
+    --foreground: 200 20% 90%;
 
-    --card: 0 0% 10%;
-    --card-foreground: 0 0% 91.8%;
+    --card: 220 25% 8%;
+    --card-foreground: 200 20% 90%;
 
-    --popover: 0 0% 10%;
-    --popover-foreground: 0 0% 91.8%;
+    --popover: 220 25% 8%;
+    --popover-foreground: 200 20% 90%;
 
-    --primary: 130 100% 50%;
-    --primary-foreground: 0 0% 6.7%;
+    --primary: 185 100% 55%;
+    --primary-foreground: 220 25% 5%;
 
-    --secondary: 0 0% 15%;
-    --secondary-foreground: 0 0% 91.8%;
+    --secondary: 220 20% 14%;
+    --secondary-foreground: 200 20% 90%;
 
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 55%;
+    --muted: 220 20% 14%;
+    --muted-foreground: 200 15% 50%;
 
-    --accent: 130 100% 50%;
-    --accent-foreground: 0 0% 6.7%;
+    --accent: 310 100% 60%;
+    --accent-foreground: 220 25% 5%;
 
-    --destructive: 1 100% 61%;
+    --destructive: 350 90% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 130 100% 50%;
+    --border: 220 20% 16%;
+    --input: 220 20% 16%;
+    --ring: 185 100% 55%;
 
     --radius: 0px;
 
-    --sidebar-background: 0 0% 6.7%;
-    --sidebar-foreground: 0 0% 91.8%;
-    --sidebar-primary: 130 100% 50%;
-    --sidebar-primary-foreground: 0 0% 6.7%;
-    --sidebar-accent: 0 0% 15%;
-    --sidebar-accent-foreground: 0 0% 91.8%;
-    --sidebar-border: 0 0% 20%;
-    --sidebar-ring: 130 100% 50%;
+    --neon-cyan: 185 100% 55%;
+    --neon-magenta: 310 100% 60%;
+    --neon-cyan-glow: 185 100% 70%;
+    --neon-magenta-glow: 310 100% 75%;
+
+    --sidebar-background: 220 25% 5%;
+    --sidebar-foreground: 200 20% 90%;
+    --sidebar-primary: 185 100% 55%;
+    --sidebar-primary-foreground: 220 25% 5%;
+    --sidebar-accent: 220 20% 14%;
+    --sidebar-accent-foreground: 200 20% 90%;
+    --sidebar-border: 220 20% 16%;
+    --sidebar-ring: 185 100% 55%;
   }
 }
 
@@ -54,10 +59,13 @@
 
   body {
     @apply bg-background text-foreground font-body antialiased;
+    background-image: 
+      radial-gradient(ellipse at 20% 50%, hsl(185 100% 55% / 0.03) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, hsl(310 100% 60% / 0.03) 0%, transparent 50%);
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-mono;
+    @apply font-display;
   }
 }
 
@@ -71,14 +79,60 @@
     50% { opacity: 0; }
   }
 
-  .card-filtered {
-    opacity: 0.2;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
+  .neon-glow-cyan {
+    text-shadow: 0 0 7px hsl(185 100% 55% / 0.8), 0 0 20px hsl(185 100% 55% / 0.4), 0 0 40px hsl(185 100% 55% / 0.2);
   }
 
-  .card-active {
-    opacity: 1;
-    transition: opacity 0.3s ease;
+  .neon-glow-magenta {
+    text-shadow: 0 0 7px hsl(310 100% 60% / 0.8), 0 0 20px hsl(310 100% 60% / 0.4), 0 0 40px hsl(310 100% 60% / 0.2);
+  }
+
+  .neon-border-cyan {
+    box-shadow: 0 0 5px hsl(185 100% 55% / 0.3), inset 0 0 5px hsl(185 100% 55% / 0.1);
+    border-color: hsl(185 100% 55% / 0.5);
+  }
+
+  .neon-border-magenta {
+    box-shadow: 0 0 5px hsl(310 100% 60% / 0.3), inset 0 0 5px hsl(310 100% 60% / 0.1);
+    border-color: hsl(310 100% 60% / 0.5);
+  }
+
+  .wet-surface {
+    background: linear-gradient(
+      135deg,
+      hsl(220 25% 8%) 0%,
+      hsl(220 25% 10%) 40%,
+      hsl(220 25% 7%) 60%,
+      hsl(220 25% 9%) 100%
+    );
+  }
+
+  .grid-overlay {
+    background-image: 
+      linear-gradient(hsl(185 100% 55% / 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(185 100% 55% / 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .scanline {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scanline::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      hsl(185 100% 55% / 0.015) 2px,
+      hsl(185 100% 55% / 0.015) 4px
+    );
+    pointer-events: none;
   }
 }
