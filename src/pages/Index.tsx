@@ -6,7 +6,7 @@ import SecurityCallout from "@/components/SecurityCallout";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background scanline">
       <Hero />
       <UseCaseLandscape />
       <RiskRewardMatrix />

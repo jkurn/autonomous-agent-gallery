@@ -16,6 +16,7 @@ export default {
       fontFamily: {
         mono: ['"Roboto Mono"', 'monospace'],
         body: ['"Inter"', 'sans-serif'],
+        display: ['"Orbitron"', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -51,6 +52,8 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        "neon-cyan": "hsl(var(--neon-cyan))",
+        "neon-magenta": "hsl(var(--neon-magenta))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

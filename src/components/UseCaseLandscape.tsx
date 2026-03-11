@@ -5,19 +5,24 @@ import UseCaseCard from "./UseCaseCard";
 const UseCaseLandscape = () => {
   const [activeFilter, setActiveFilter] = useState<Category | "ALL">("ALL");
 
+  const filteredUseCases =
+    activeFilter === "ALL"
+      ? useCases
+      : useCases.filter((uc) => uc.category === activeFilter);
+
   return (
     <section className="border-b border-border py-12 md:py-16">
       <div className="container">
-        <h2 className="font-mono text-lg md:text-xl font-bold mb-6 tracking-tight">
+        <h2 className="font-display text-lg md:text-xl font-bold mb-6 tracking-tight">
           USE CASE LANDSCAPE<span className="terminal-cursor text-primary">_</span>
         </h2>
 
         <div className="flex flex-wrap gap-2 mb-8">
           <button
             onClick={() => setActiveFilter("ALL")}
-            className={`font-mono text-xs tracking-wider px-3 py-1.5 border transition-colors ${
+            className={`font-mono text-xs tracking-wider px-3 py-1.5 border transition-all ${
               activeFilter === "ALL"
-                ? "border-primary text-primary"
+                ? "neon-border-cyan text-primary"
                 : "border-border text-muted-foreground hover:text-foreground hover:border-foreground"
             }`}
           >
@@ -29,11 +34,11 @@ const UseCaseLandscape = () => {
               <button
                 key={cat}
                 onClick={() => setActiveFilter(cat)}
-                className={`font-mono text-xs tracking-wider px-3 py-1.5 border transition-colors ${
+                className={`font-mono text-xs tracking-wider px-3 py-1.5 border transition-all ${
                   activeFilter === cat
                     ? cat === "Unhinged"
-                      ? "border-destructive text-destructive"
-                      : "border-primary text-primary"
+                      ? "neon-border-magenta text-accent"
+                      : "neon-border-cyan text-primary"
                     : "border-border text-muted-foreground hover:text-foreground hover:border-foreground"
                 }`}
               >
@@ -44,12 +49,9 @@ const UseCaseLandscape = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
-          {useCases.map((uc) => (
+          {filteredUseCases.map((uc) => (
             <div key={uc.id} className="bg-background">
-              <UseCaseCard
-                useCase={uc}
-                filtered={activeFilter !== "ALL" && uc.category !== activeFilter}
-              />
+              <UseCaseCard useCase={uc} filtered={false} />
             </div>
           ))}
         </div>
