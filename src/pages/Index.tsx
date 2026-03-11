@@ -43,7 +43,7 @@ const Index = () => {
                 Jonathan Kurniawan — AI strategist and builder. If you've done something wild with OpenClaw that belongs here, send it over.
               </p>
               <a
-                href="mailto:jonathan.kurniawan@prodago.com"
+                href="mailto:jonathan@bridgeaiknowledge.com"
                 className="inline-block font-mono text-[10px] tracking-wider text-primary mt-3 hover:neon-glow-cyan transition-all"
               >
                 SUBMIT A USE CASE →
