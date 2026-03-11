@@ -34,12 +34,12 @@ const SecurityCallout = () => {
             </h3>
             <ul className="space-y-2">
               {[
-                "Install on completely separate hardware — its own Mac Mini or MacBook",
+                "Install on completely separate hardware - its own Mac Mini or MacBook",
                 "Create its own Apple account and email address",
                 "Give it a pre-paid debit card with forced daily spend limit, no overdraw",
                 "Use API keys with spend alerts and hard limits",
                 "Do NOT give it access to any personal accounts",
-                "Start with web browsing and research — not finances or sensitive data",
+                "Start with web browsing and research - not finances or sensitive data",
               ].map((item) => (
                 <li key={item} className="font-mono text-xs text-muted-foreground flex gap-2">
                   <span className="text-primary shrink-0">→</span>

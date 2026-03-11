@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { UseCase } from "@/data/useCases";
+import { categoryColor, complexityColor } from "@/data/categoryColors";
 
 const complexityMap = {
   low: "LOW",
@@ -26,16 +27,16 @@ const UseCaseCard = ({ useCase, filtered }: UseCaseCardProps) => {
             {String(useCase.id).padStart(2, "0")}
           </span>
           <div className="flex items-center gap-2">
-            {useCase.category === "Unhinged" ? (
-              <span className="font-mono text-[10px] tracking-wider text-accent neon-glow-magenta">
-                {useCase.category.toUpperCase()}
-              </span>
-            ) : (
-              <span className="font-mono text-[10px] tracking-wider text-muted-foreground">
-                {useCase.category.toUpperCase()}
-              </span>
-            )}
-            <span className="font-mono text-[10px] tracking-wider text-muted-foreground">
+            <span
+              className="font-mono text-[10px] tracking-wider"
+              style={{ color: categoryColor[useCase.category] }}
+            >
+              {useCase.category.toUpperCase()}
+            </span>
+            <span
+              className="font-mono text-[10px] tracking-wider"
+              style={{ color: complexityColor[useCase.complexity] }}
+            >
               {complexityMap[useCase.complexity]}
             </span>
           </div>
